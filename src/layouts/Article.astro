@@ -1,0 +1,15 @@
+---
+import { Image } from "astro:assets";
+
+const { frontmatter } = Astro.props;
+console.log("frontmatter", frontmatter);
+console.log("banner is a string?", frontmatter.banner)
+
+---
+
+<Image
+  alt="banner"
+  src={frontmatter.banner}
+  width={1920}
+  height={1080}
+/>

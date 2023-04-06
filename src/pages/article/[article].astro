@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import type { BlogSchema } from "../../content/config";
+
+export const getStaticPaths = async () => {
+  const articles = await getCollection("blog");
+  return articles.map((article) => {
+    return {
+      params: { article: article.slug },
+      props: { article },
+    };
+  });
+};
+
+
+let article: BlogSchema = Astro.props.article;
+
+const { Content } = await article.render();
+---
+
+<Content />
